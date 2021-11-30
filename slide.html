@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slider</title>
+	<link rel="stylesheet" type="text/css" href="design.css">
+</head>
+<body>
+	<div class="container">
+		<div class="image-container">
+			<!-- all images -->
+			<img src="im1.jpg" id="content1" alt="" class="active">
+			<img src="im2.jpg" id="content2" alt="">
+			<img src="im3.jpg" id="content3" alt="">
+			<img src="im4.jpg" id="content4" alt="">
+		
+		</div>
+		<div class="dot">
+			<button onclick="dot(1)"></button>
+			<button onclick="dot(2)"></button>
+			<button onclick="dot(3)"></button>
+			<button onclick="dot(4)"></button>
+
+
+		</div>
+		<!-- button to change the Images -->
+		<button id="prev" onclick="prev()">&lt;</button>
+		<button id="next" onclick="next()">&gt;</button>
+
+	</div>
+	<!-- Javascript code-->
+	<script type="text/javascript">
+		let i=0;//current slider
+		let j=4;//total slider
+		const dots=document.querySelectorAll(".dot button");
+		const images=document.querySelectorAll("image-container images");
+
+		function next(){
+			document.getElementById("content" +(i+1)).classList.remove("active");
+			i=(j+ i+ 1)%j;
+
+			document.getElementById("content" +(i+1)).classList.add("active");
+
+			indicator(i+1);
+		}
+
+		function prev(){
+			document.getElementById("content"+ (i+1)).classList.remove("active");
+			i=(j+i-1)%j;
+
+			document.getElementById("content" +(i+1)).classList.add("active");
+
+			indicator(i+1);
+		}
+
+		// active indicator
+		function indicator(num){
+			dots.forEach(function(dot){
+				dot.style.backgroundColor="transparent";
+
+		});
+			document.querySelector(".dot button:nth-child(" +num+ ")").style.backgroundColor = "#076bb8";
+			}
+
+
+
+	</script>
+
+</body>
+</html>
